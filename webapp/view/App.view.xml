@@ -15,4 +15,5 @@
 			backgroundDesign="Translucent">
 		</f:FlexibleColumnLayout>
 	</App>
+	
 </mvc:View>
