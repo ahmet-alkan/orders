@@ -1,6 +1,8 @@
 <mvc:View
-	controllerName="opensap.orders.Orders.controller.Master"
+	controllerName="opensap.orders.controller.Master"
 	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:l="sap.ui.layout"
 	xmlns:semantic="sap.f.semantic"
 	xmlns:mvc="sap.ui.core.mvc">
 
@@ -8,11 +10,21 @@
 		id="masterPage"
 		preserveHeaderStateOnScroll="true"
 		toggleHeaderOnTitleClick="false">
-		<semantic:titleHeading>
+		<semantic:headerContent>
 			<Title
 				id="masterPageTitle"
-				text="{masterView>/title}"
-				level="H2"/>
+				text="{masterView>/title}"/>
+		</semantic:headerContent>
+		<semantic:titleHeading>
+			<l:HorizontalLayout>
+				<f:Avatar
+					src="sap-icon://sap-ui5"
+					displaySize="L"/>
+				<l:VerticalLayout class="sapUiSmallMargin">
+					<Title level="H1" titleStyle="H1" text="UI5 Air Cargo"/>
+					<Text text="You name it, we ship it!"/>
+				</l:VerticalLayout>
+			</l:HorizontalLayout>
 		</semantic:titleHeading>
 		<semantic:content>
 			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->
@@ -23,8 +35,8 @@
 				items="{
 					path: '/SalesOrderSet',
 					sorter: {
-						path: 'CustomerName',
-						descending: false
+						path: 'CreatedAt',
+						descending: true
 					},
 					groupHeaderFactory: '.createGroupHeader'
 				}"
@@ -43,8 +55,7 @@
 						press=".onOpenViewSettings">
 						<Title
 							id="filterBarLabel"
-							text="{masterView>/filterBarLabel}"
-							level="H3"/>
+							text="{masterView>/filterBarLabel}"/>
 					</Toolbar>
 				</infoToolbar>
 				<headerToolbar>
